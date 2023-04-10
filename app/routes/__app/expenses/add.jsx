@@ -22,12 +22,6 @@ export async function action({ request }) {
   const formData = await request.formData();
   const expenseData = Object.fromEntries(formData);
 
-  try {
-    validateExpenseInput(expenseData);
-  } catch (error) {
-    return error;
-  }
-
   await addExpense(expenseData);
   return redirect("/expenses");
 }
